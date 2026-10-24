@@ -2,7 +2,7 @@
 
 Welcome to the central repository for my personal portfolio website, featuring end-to-end data analytics projects, interactive dashboards, and business intelligence solutions.
 
-👉 **Live Portfolio Website:** [https://aamirwarsi0101.github.io](https://aamirwarsi0101.github.io)
+👉 **Live Portfolio Website:** [https://aamirwarsi0101.github.io/portfolio/](https://aamirwarsi0101.github.io/portfolio/)
 
 ---
 
