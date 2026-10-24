@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aamir Warsi — Data Analyst & Insight Lab</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #08080a;
+            --card-bg: #121216;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --accent: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8vw;
+            background: rgba(8, 8, 10, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: #fff;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5vw;
+        }
+
+        /* Hero Section */
+        header.hero {
+            padding: 180px 0 100px 0;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -1.5px;
+            margin-bottom: 25px;
+        }
+
+        .hero-content h1 span {
+            color: var(--accent);
+        }
+
+        .hero-content p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 35px;
+            max-width: 550px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            background: #0ea5e9;
+            box-shadow: 0 0 25px var(--accent-glow);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #fff;
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Hero Profile Image Card */
+        .hero-image-wrapper {
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .profile-card {
+            width: 320px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 4px;
+            background: linear-gradient(90deg, var(--accent), #6366f1);
+        }
+
+        .profile-card img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .profile-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .profile-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Metrics Banner */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin: 60px 0 100px 0;
+        }
+
+        .metric-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 30px;
+            border-radius: 14px;
+            text-align: center;
+        }
+
+        .metric-box h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .metric-box p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Section Title */
+        .section-header {
+            margin-bottom: 50px;
+        }
+
+        .section-header span {
+            color: var(--accent);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+
+        .section-header h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-top: 10px;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 120px;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(56, 189, 248, 0.4);
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .project-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .project-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .project-link:hover {
+            color: var(--accent);
+        }
+
+        /* Skills Matrix */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 120px;
+        }
+
+        .skill-category {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 30px;
+            border-radius: 16px;
+        }
+
+        .skill-category h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .skill-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .chip {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 60px 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        @media (max-width: 900px) {
+            header.hero {
+                grid-template-columns: 1fr;
+                padding-top: 140px;
+                text-align: center;
+            }
+            .hero-content p {
+                margin: 0 auto 35px auto;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">AAMIR <span>WARSI</span></div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Data Stories</a></li>
+            <li><a href="#skills">Expertise</a></li>
+            <li><a href="mailto:alwarsi925@gmail.com">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <header class="hero">
+            <div class="hero-content">
+                <h1>Turning Complex Data into <span>Strategic Impact.</span></h1>
+                <p>MCA Graduate & Data Analyst specializing in building robust analytical pipelines, SQL querying, and interactive Power BI dashboards that drive decision-making.</p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">Explore Data Stories ↓</a>
+                    <a href="https://www.linkedin.com/in/aamir-warsi/" target="_blank" class="btn btn-secondary">LinkedIn Profile ↗</a>
+                </div>
+            </div>
+            <div class="hero-image-wrapper">
+                <div class="profile-card">
+                    <img src="my_linkedin_img.png" alt="Aamir Warsi">
+                    <h3>Aamir Warsi</h3>
+                    <p>Data Analyst | Noida, UP</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Metrics Banner -->
+        <div class="metrics-grid">
+            <div class="metric-box">
+                <h2>4+</h2>
+                <p>Production-Grade Projects</p>
+            </div>
+            <div class="metric-box">
+                <h2>3M+</h2>
+                <p>Records Cleaned & Analyzed</p>
+            </div>
+            <div class="metric-box">
+                <h2>40%</h2>
+                <p>Reporting Time Reduced via ETL</p>
+            </div>
+        </div>
+
+        <!-- Featured Projects Section -->
+        <section id="projects">
+            <div class="section-header">
+                <span>Case Studies</span>
+                <h2>Featured Data Stories</h2>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Project 1: Blinkit Analysis -->
+                <div class="project-card">
+                    <div>
+                        <div class="tech-tags">
+                            <span class="tag">SQL</span>
+                            <span class="tag">Power BI</span>
+                            <span class="tag">Data Analytics</span>
+                        </div>
+                        <h3>Blinkit Analysis</h3>
+                        <p>Comprehensive exploratory analysis of quick-commerce sales and item performance. Evaluated outlet characteristics, tier distributions, and item category demand to generate actionable inventory and sales insights.</p>
+                    </div>
+                    <a href="https://github.com/aamirwarsi0101/Blinkit_Analysis" target="_blank" class="project-link">View GitHub Repository ↗</a>
+                </div>
+
+                <!-- Project 2: Supply Chain Analysis Dashboard -->
+                <div class="project-card">
+                    <div>
+                        <div class="tech-tags">
+                            <span class="tag">Power BI</span>
+                            <span class="tag">DAX</span>
+                            <span class="tag">Supply Chain</span>
+                        </div>
+                        <h3>Supply Chain Analysis Dashboard</h3>
+                        <p>Developed an end-to-end supply chain intelligence dashboard to track shipping efficiency, fulfillment rates, inventory bottlenecks, and transport route performance across operational datasets.</p>
+                    </div>
+                    <a href="https://github.com/aamirwarsi0101/Supply-Chain-Analysis-Dashboard" target="_blank" class="project-link">View GitHub Repository ↗</a>
+                </div>
+
+                <!-- Project 3: Customer Behavior Analysis -->
+                <div class="project-card">
+                    <div>
+                        <div class="tech-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">SQL</span>
+                            <span class="tag">Power BI</span>
+                        </div>
+                        <h3>Customer Behavior Analysis</h3>
+                        <p>Analyzed 5,000 e-commerce customer records and 30 unique product categories. Performed EDA, feature engineering, and built interactive dashboards to uncover purchasing patterns and boost decision efficiency by 40%.</p>
+                    </div>
+                    <a href="https://github.com/aamirwarsi0101/customer_behaviour_analysis" target="_blank" class="project-link">View GitHub Repository ↗</a>
+                </div>
+
+                <!-- Project 4: HR Attrition Analysis Dashboard -->
+                <div class="project-card">
+                    <div>
+                        <div class="tech-tags">
+                            <span class="tag">Power BI</span>
+                            <span class="tag">DAX</span>
+                            <span class="tag">Data Modeling</span>
+                        </div>
+                        <h3>HR Attrition Analysis Dashboard</h3>
+                        <p>Developed an interactive workforce intelligence dashboard tracking 10,000+ employee records. Designed advanced DAX measures, KPIs, and dynamic filters to isolate attrition drivers across departments and salary levels.</p>
+                    </div>
+                    <a href="https://github.com/aamirwarsi0101/HR_Attrition_Analysis_Dashboard" target="_blank" class="project-link">View GitHub Repository ↗</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Expertise Section -->
+        <section id="skills">
+            <div class="section-header">
+                <span>Capabilities</span>
+                <h2>Technical Expertise</h2>
+            </div>
+
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h4>Programming & Querying</h4>
+                    <div class="skill-chips">
+                        <span class="chip">SQL (Joins, CTEs, Window Functions)</span>
+                        <span class="chip">Python (Pandas, NumPy, Matplotlib)</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4>Business Intelligence & Vis</h4>
+                    <div class="skill-chips">
+                        <span class="chip">Power BI Dashboards</span>
+                        <span class="chip">DAX Measures & Modeling</span>
+                        <span class="chip">Advanced MS Excel</span>
+                        <span class="chip">Power Query ETL</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4>Analytical Abilities</h4>
+                    <div class="skill-chips">
+                        <span class="chip">Data Cleaning & Standardization</span>
+                        <span class="chip">Exploratory Data Analysis (EDA)</span>
+                        <span class="chip">KPI Tracking & Trend Analysis</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Aamir Warsi. Built with high performance & precision. Reach out at <a href="mailto:alwarsi925@gmail.com">alwarsi925@gmail.com</a></p>
+    </footer>
+
+</body>
+</html>
